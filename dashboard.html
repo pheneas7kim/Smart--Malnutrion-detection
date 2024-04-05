@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="body">
+    <h2>Welcome to the Dashboard</h2>
+    {% if prediction %}
+        <p>Predicted malnutrition status: {{ prediction }}</p>
+        <p>Recommendation: {{ recommendation }}</p>
+    {% endif %}
+    <form action="/predict_malnutrition" method="post">
+        <label for="age">Age(months):</label><br>
+        <input type="text" id="age" name="age"class="large-textbox"><br>
+        <label for="weight">Weight (kg):</label><br>
+        <input type="text" id="weight" name="weight" class="large-textbox"><br>
+        <label for="height">Height (cm):</label><br>
+        <input type="text" id="height" name="height" class="large-textbox"><br><br>
+        <input type="submit" value="Predict" class="btn">
+    </form>
+</body>
+</html>
